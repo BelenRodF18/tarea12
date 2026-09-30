@@ -1,0 +1,35 @@
+# Tarea 12 - Concesionaria
+# Requests de la API (extension "REST Client" de VS Code: clic en "Send Request").
+# Levantar antes con: docker compose up -d --build
+
+@base = http://localhost:8092/api
+
+### Estado de la API y cantidad de filas por tabla
+GET {{base}}/estado
+
+### 1. Busqueda de cliente por ID (solo el nombre completo)
+GET {{base}}/clientes/1
+
+### 2. Reporte general de clientes (con o sin autos)
+GET {{base}}/clientes
+
+### 3. Historial de compras de un cliente (Maria compro 3 autos)
+GET {{base}}/clientes/1/autos
+
+### 4. Cantidad de ventas de cada vendedor
+GET {{base}}/vendedores
+
+### 5. Ventas de un vendedor: auto, modelo, cliente, monto y fecha
+GET {{base}}/vendedores/1/ventas
+
+### Nombre del vendedor (lo usa la pagina del punto 6)
+GET {{base}}/vendedores/1
+
+### 7. Todos los vehiculos con precio, nombre, marca y modelo
+GET {{base}}/vehiculos
+
+### Errores: cliente que no existe (404)
+GET {{base}}/clientes/99
+
+### Errores: id no numerico (400)
+GET {{base}}/vendedores/abc/ventas
